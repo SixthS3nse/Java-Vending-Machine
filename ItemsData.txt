@@ -1,0 +1,6 @@
+A1,Apple,3,119,
+A2,Orange,3,199,
+A3,Grape,2,199,
+A4,Watermelon,2,125,
+A5,Banana,3,198,
+A6,Durian,6,198,

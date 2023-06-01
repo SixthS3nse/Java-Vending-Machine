@@ -1,0 +1,50 @@
+        String username = txtUser.getText();
+        String password = txtPass.getText();
+       
+        
+        if (username.equals("Admin") && (password.equals("abc123")))
+            //JOptionPane.showMessageDialog(frmLogin, "");
+            txtUser.setText(null);
+            txtPass.setText(null);
+            
+            frmAdd Info = new frmAdd();
+            Info.setVisible(true);
+            
+            //Hide Current Form
+            dispose();
+            
+    }
+
+
+**Add**
+    try {
+      FileWriter myWriter = new FileWriter("ItemsData.txt",true);
+      myWriter.write("\n" + txtProduct.getText() + "/" + txtPrice.getText() + "/" + txtQuantity.getText());
+      txtProduct.setText(null);
+      txtPrice.setText(null);
+      txtQuantity.setText(null);
+      myWriter.close();
+      System.out.println("Successfully wrote to the file.");
+      
+      String filePath = "C:\\Users\\ljk99\\Desktop\\APU\\APU Assignment\\Diploma In Software Engineering\\5. Fith Semester\\Java Programming\\Assignment\\Vending Machine\\VendingMachine\\ItemsData.txt";
+      File file = new File(filePath);
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            
+            Object[] tableLines = br.lines().toArray();
+            
+            for(int i=0; i< tableLines.length; i++){
+                String line = tableLines[i].toString().trim();
+                String[] dataRow = line.split("/");
+                model.addRow(dataRow);                      
+            }           
+        } catch (FileNotFoundException ex) {
+            //Logger.getLogger(TextFileDataToJTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
